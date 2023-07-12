@@ -49,4 +49,17 @@ public class Library
             }
         }
     }
+
+    public int GetTotalBooks()
+    {
+        using(SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            using(SqlCommand command = new SqlCommand("GetTotalBooks",con))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                return (int)command.ExecuteScalar();
+            }
+        }
+    }
 }
