@@ -13,6 +13,7 @@ internal class Program
             Console.WriteLine("Enter 2 to Get Total Books:");
             Console.WriteLine("Enter 3 to Get Available Book:");
             Console.WriteLine("Enter 4 to Get Borrowed Book:");
+            Console.WriteLine("Enter 5 to Get Book By Aythor Name:");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -34,6 +35,9 @@ internal class Program
                 case 4:
                     int getBorrowedBooks = library.GetBorrowedBook();
                     Console.WriteLine($"Get Borrowed Books: {getBorrowedBooks}");
+                    break;
+                case 5:
+                    library.GetBooksByAuthor("Dinker");
                     break;
                 default:
                     menu = false;
