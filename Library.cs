@@ -126,7 +126,7 @@ public class Library
     {
         if (book != null)
         {
-            Console.WriteLine($"Book ID: {book.BookId}");
+            Console.WriteLine($"Book Id: {book.BookId}");
             Console.WriteLine($"Title: {book.Title}");
             Console.WriteLine($"Author: {book.Author}");
             Console.WriteLine($"Genre: {book.Genre}");
@@ -136,5 +136,38 @@ public class Library
         {
             Console.WriteLine("There is no such Book: ");
         }
+    }
+
+    public Book GetBooksByGenre(string genreName)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            using (SqlCommand command = new SqlCommand("GetBooksByGenre", connection))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("Genre", genreName);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+
+                        int bookId = (int)reader["BookId"];
+                        string title = (string)reader["Title"];
+                        string author = (string)reader["Author"];
+                        string genre = (string)reader["Genre"];
+                        bool isBorrowed = (bool)reader["IsBorrowed"];
+
+                        Book book = new Book(bookId, title, author, genre, isBorrowed);
+                        PrintBook(book);
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no such book Exist for this Author:");
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

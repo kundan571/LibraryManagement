@@ -14,6 +14,8 @@ internal class Program
             Console.WriteLine("Enter 3 to Get Available Book:");
             Console.WriteLine("Enter 4 to Get Borrowed Book:");
             Console.WriteLine("Enter 5 to Get Book By Aythor Name:");
+            Console.WriteLine("Enter 6 to Get Books By Genre:");
+            Console.WriteLine("Enter 0 to Exit:");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -38,6 +40,9 @@ internal class Program
                     break;
                 case 5:
                     library.GetBooksByAuthor("Dinker");
+                    break;
+                case 6:
+                    library.GetBooksByGenre("Fantsy");
                     break;
                 default:
                     menu = false;
