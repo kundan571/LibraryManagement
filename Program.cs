@@ -11,6 +11,7 @@ internal class Program
             Console.WriteLine("Enter Menu:");
             Console.WriteLine("Enter 1 to Add Book & Library:");
             Console.WriteLine("Enter 2 to Get Total Books:");
+            Console.WriteLine("Enter 3 to Get Available Book:");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -19,10 +20,15 @@ internal class Program
                     library.AddBook(new Book(1, "The Da Vinci Code", " Dan Brow", "Mystry", true));
                     library.AddBook(new Book(2, "Harry Potter", "J.K Rowling", "Fantsy", true));
                     library.AddBook(new Book(3, "RashmiRathi", "Dinker", "Mythology", true));
+                    library.AddBook(new Book(4,"Ramayan","Valmiki","Hindu Mythology", false));
                     break;
                 case 2:
                     int totalBooks = library.GetTotalBooks();
                     Console.WriteLine("Total Books: " + totalBooks);
+                    break;
+                case 3:
+                    int getAvailableBooks = library.GetAvailableBook();
+                    Console.WriteLine($"Available Books: {getAvailableBooks}");
                     break;
                 default:
                     menu = false;

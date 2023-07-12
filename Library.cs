@@ -62,4 +62,17 @@ public class Library
             }
         }
     }
+
+    public int GetAvailableBook()
+    {
+        using (SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            using (SqlCommand command = new SqlCommand("GetAvailableBooks", con))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                return (int)command.ExecuteScalar();
+            }
+        }
+    }
 }
