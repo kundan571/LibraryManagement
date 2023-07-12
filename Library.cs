@@ -75,4 +75,17 @@ public class Library
             }
         }
     }
+
+    public int GetBorrowedBook()
+    {
+        using (SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            using (SqlCommand command = new SqlCommand("GetBorrowedBooks", con))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                return (int)command.ExecuteScalar();
+            }
+        }
+    }
 }
