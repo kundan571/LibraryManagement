@@ -35,4 +35,18 @@ public class Library
             }
         }
     }
+
+    public void AddLibrary(Library library)
+    {
+        using(SqlConnection conn = new SqlConnection(connectionString))
+        {
+            conn.Open();
+            using(SqlCommand command =new SqlCommand("AddLibrary",conn))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Name", library.Name);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
 }

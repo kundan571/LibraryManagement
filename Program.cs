@@ -14,9 +14,10 @@ internal class Program
             switch (choice)
             {
                 case 1:
-                    library.AddBook(new Book(1, "The Da Vinci Code", " Dan Brow", "Mystry", true));
+                    library.AddLibrary(library);
+                    /*library.AddBook(new Book(1, "The Da Vinci Code", " Dan Brow", "Mystry", true));
                     library.AddBook(new Book(2, "Harry Potter", "J.K Rowling", "Fantsy", true));
-                    library.AddBook(new Book(3, "RashmiRathi", "Dinker", "Mythology", true));
+                    library.AddBook(new Book(3, "RashmiRathi", "Dinker", "Mythology", true));*/
                     break;
                 default:
                     menu = false;
